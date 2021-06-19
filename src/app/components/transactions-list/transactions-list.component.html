@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header bg-info text-light">
+      <i class="lni lni-list mr-3 lni-lg"></i>
+      Transactions
+      <b>List</b>
+  </div>
+
+  <div class="card-body">
+      <app-transaction-item *ngFor="let transaction of transactions$ | async">
+          <div
+              data-test-hook='transactionColour'
+              [style.background-color]="transaction.categoryCode"
+              style="width: .3em; height: 2em;"
+          ></div>
+          <div data-test-hook='transactionDate'>{{ transaction.dates.valueDate | date }}</div>
+      </app-transaction-item>
+    </div>
+</div>

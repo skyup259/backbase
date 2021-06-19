@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header bg-info text-light">
+      <i class="lni lni-credit-cards mr-3 lni-lg"></i>
+      <b>Make</b>
+      Transfer
+  </div>
+
+  <div class="card-body">
+      <form action="#" class="needs-validation" [formGroup]="form" (ngSubmit)="handleSubmit($event)">
+          <div class="form-group">
+              <label for="fromAccount">
+                  From Account
+              </label>
+              <div class=" input-group w-100">
+                  <fieldset class="w-100" disabled>
+                      <input value="My Personal Account: {{amountBalance$ | async | currency:'EUR'}}" type="text"
+                          class="form-control" id="fromAccount" name="fromAccount" placeholder="My Personal Account">
+                  </fieldset>
+              </div>
+
+              <label for="toAccount">
+                  To Account
+              </label>
+              <div class=" input-group w-100">
+                  <input type="text" id="toAccount" name="toAccount" class="form-control" [class.ng-touched]="submitted"
+                      placeholder="type an account name" formControlName="toAccount">
+              </div>
+              <p *ngIf="submitted && toAccount.errors?.required" class="invalid-feedback">This field is required</p>
+
+              <label for="amount">
+                  Amount
+              </label>
+              <div class=" input-group w-100">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="lni lni-euro"></i></div>
+                  </div>
+                  <input type="number" id="amount" name="amount" class="form-control" step="0.01" [class.ng-touched]="submitted"
+                      placeholder="specify the amount" formControlName="amount">
+              </div>
+              <p *ngIf="submitted && amount.errors?.required" class="invalid-feedback">This field is required</p>
+              <p *ngIf="amount.errors?.min" class="invalid-feedback">The amount can't be negative</p>
+              <p *ngIf="amount.errors?.balanceTooSmall" class="invalid-feedback">Balance is too low</p>
+
+              <div class="btn-group w-100 justify-content-end">
+                  <app-submit-button></app-submit-button>
+              </div>
+          </div>
+      </form>
+    </div>
+  </div>

@@ -1,1 +1,61 @@
+// spacing
+$small-spacing: 5px;
+$medium-spacing: 10px;
+$large-spacing: 20px;
+
+// colors
+$primary-blue: #00a1e0;
+
 /* You can add global styles to this file, and also import other style files */
+$background-color: #fff;
+$btn-primary-color: #db6c36;
+$btn-secondary-color: #fff;
+
+/* Importing Bootstrap SCSS file. */
+$theme-colors: (
+  "primary":    $btn-primary-color,
+  "secondary":  $background-color,
+  "info":       $primary-blue,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+footer,
+header {
+    background-color: $background-color;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $small-spacing $medium-spacing;
+    color: $primary-blue;
+}
+
+label {
+    margin-top: $small-spacing;
+    font-weight: bold;
+}
+
+input::placeholder {
+    font-style: italic;
+}
+
+.btn-group {
+    margin-top: $large-spacing;
+}
+
+.ng-touched.ng-invalid {
+    @extend .is-invalid;
+}
+
+.invalid-feedback {
+    display: block;
+}

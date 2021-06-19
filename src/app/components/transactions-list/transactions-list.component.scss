@@ -1,0 +1,14 @@
+@import '../../../styles.scss';
+
+.card {
+    border-radius: $large-spacing;
+}
+
+.card-header {
+  &:first-child {
+      border-top-left-radius: $large-spacing;
+      border-top-right-radius: $large-spacing;
+      padding-top: $medium-spacing;
+      padding-bottom: $medium-spacing;
+  }
+}

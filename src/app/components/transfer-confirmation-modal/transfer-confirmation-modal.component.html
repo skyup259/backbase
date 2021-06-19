@@ -1,0 +1,18 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title"><b>Review</b> Transfer</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+      <p><i>Are you ready to send out this transfer?</i></p>
+      <b>It will be send to account:</b>
+      <p>{{ data.toAccount }}</p>
+      <b>With the amount of:</b>
+      <p>{{ data.amount | currency:'EUR' }}</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Send Transfer</button>
+  </div>
+</ng-template>
+

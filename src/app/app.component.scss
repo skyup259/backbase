@@ -1,0 +1,32 @@
+@import '../styles.scss';
+
+.bg-image {
+    display: block;
+    background-image: url("../assets/background.jpg");
+    filter: blur(4px);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.content {
+    min-height: calc(100vh - #{11 * $medium-spacing});
+    width: 80%;
+    margin: $large-spacing auto;
+}
+
+.col-4 {
+  width: 33.3333333333% !important;
+}
+
+.col-8 {
+  width: 66.6666666667% !important;
+}

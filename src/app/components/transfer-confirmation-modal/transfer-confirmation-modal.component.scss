@@ -1,0 +1,10 @@
+@import '../../../styles.scss';
+
+.btn-close:focus {
+  box-shadow: none;
+  opacity: .5;
+}
+
+.btn-close {
+  font-size: .9rem;
+}
