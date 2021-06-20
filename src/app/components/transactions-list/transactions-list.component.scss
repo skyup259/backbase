@@ -12,3 +12,47 @@
       padding-bottom: $medium-spacing;
   }
 }
+
+.transaction-color, .transaction-date, .transaction-amount {
+  float: left;
+}
+
+.transaction-color {
+  width: .3rem !important;
+  height: 4em;
+  padding: 0 !important;
+  margin-bottom: 1rem !important;
+  margin-right: 1rem !important;
+}
+
+.transaction-date {
+  width: 20% !important;
+  padding-left: 0rem !important;
+  padding-top: .8rem;
+}
+
+.transaction-amount {
+  width: 40% !important;
+  text-align: right;
+  padding-top: .8rem;
+}
+
+.transaction-type {
+  opacity: .5;
+}
+
+.text-color-green {
+  color: green;
+}
+
+.text-color-red {
+  color: red;
+}
+
+.mr-5 {
+  margin-right: .5rem;
+}
+
+.mt-15 {
+  margin-top: 1.5rem !important;
+}

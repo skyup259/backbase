@@ -18,6 +18,7 @@ export class TransactionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactions$ = this.transactionsService.getTransactions();
+    console.log('value', this.transactions$);
   }
 
 }

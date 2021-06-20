@@ -1,18 +1,24 @@
 <div class="card">
   <div class="card-header bg-info text-light">
-      <i class="lni lni-list mr-3 lni-lg"></i>
+      <i class="lni lni-list mr-3 lni-lg mr-5"></i>
       Transactions
       <b>List</b>
   </div>
 
   <div class="card-body">
-      <app-transaction-item *ngFor="let transaction of transactions$ | async">
-          <div
-              data-test-hook='transactionColour'
-              [style.background-color]="transaction.categoryCode"
-              style="width: .3em; height: 2em;"
-          ></div>
-          <div data-test-hook='transactionDate'>{{ transaction.dates.valueDate | date }}</div>
-      </app-transaction-item>
+    <app-filter></app-filter>
+    <div class="container mt-15">
+      <app-transaction-item *ngFor="let transaction of transactions$ | async" class="row">
+        <div
+            data-test-hook='transactionColour'
+            [style.background-color]="transaction.categoryCode"
+            class="transaction-color col-1"
+        ></div>
+        <div data-test-hook='transactionDate' class="transaction-date">{{ transaction.dates.valueDate | date }}</div>
+        <div data-test-hook='transactionMerchantName' class="merchant-name">{{ transaction.merchant.name }}</div>
+        <div data-test-hook='transactionType' class="transaction-type">{{ transaction.transaction.type }}</div>
+        <div data-test-hook='transactionAmount' class="transaction-amount col-4" [ngClass]="transaction.transaction.amountCurrency.amount >= 0 ? 'text-color-green' : 'text-color-red'">{{ transaction.transaction.amountCurrency.amount | currency:"EUR":"symbol"}}</div>
+    </app-transaction-item>
+    </div>
     </div>
 </div>

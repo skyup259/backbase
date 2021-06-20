@@ -11,13 +11,14 @@ import { mockData } from './mock-data';
   providedIn: 'root'
 })
 export class TransactionsService {
+  constructor(private http: HttpClient) { }
 
-  private transactionsUrl = 'https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com/dev/transactions';
+ // private transactionsUrl = 'https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com/dev/transactions';
+  private transactionsUrl = 'assets/data.json';
   private httpOptions = {
     headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*',  })
   };
 
-  constructor(private http: HttpClient) { }
 
   getTransactions() : Observable<Transaction[]> {
     return this.http.get<{data: Transaction[]}>(this.transactionsUrl, this.httpOptions)
@@ -26,4 +27,10 @@ export class TransactionsService {
         catchError(() => of(mockData.data))
       );
   }
+
+  // getTransactions() {
+  //   var data =  this.http.get(this.transactionsUrl);
+  //   console.log('yes',data);
+  //   return data;
+  // }
 }

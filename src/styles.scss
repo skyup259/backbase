@@ -39,6 +39,15 @@ header {
     color: $primary-blue;
 }
 
+.card-body {
+  max-height: 530px;
+  overflow-y: auto;
+}
+
+.card-body::-webkit-scrollbar {
+  display: none;
+}
+
 label {
     margin-top: $small-spacing;
     font-weight: bold;
@@ -58,4 +67,17 @@ input::placeholder {
 
 .invalid-feedback {
     display: block;
+}
+
+.merchant-details {
+  width: 37% !important;
+  float: left;
+}
+
+.card-header {
+  color: white;
+}
+
+.input-group-text {
+  font-size: 1.5rem;
 }
