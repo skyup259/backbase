@@ -1,17 +1,10 @@
-// spacing
 $small-spacing: 5px;
 $medium-spacing: 10px;
 $large-spacing: 20px;
-
-// colors
 $primary-blue: #00a1e0;
-
-/* You can add global styles to this file, and also import other style files */
 $background-color: #fff;
 $btn-primary-color: #db6c36;
 $btn-secondary-color: #fff;
-
-/* Importing Bootstrap SCSS file. */
 $theme-colors: (
   "primary":    $btn-primary-color,
   "secondary":  $background-color,

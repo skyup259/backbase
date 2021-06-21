@@ -36,10 +36,8 @@ export class TransferConfirmationModalComponent implements OnInit {
 
   open = () => {
     this.modalService.open(this.content).result.then((result) => {
-      // this.closeResult = `Closed with: ${result}`;
       this.store.dispatch(toggleTrasferConfirmationModal({ open: false }));
     }, (reason) => {
-      // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       this.store.dispatch(toggleTrasferConfirmationModal({ open: false }));
     });
   }
