@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -17,6 +17,8 @@ export class TransferConfirmationModalComponent implements OnInit {
 
   data: Transfer;
   @ViewChild('content') content: Component;
+  @Output() transferList = new EventEmitter();
+  @Output() transferBox = new EventEmitter();
 
   constructor(private modalService: NgbModal, private store: Store<{app: AppState}>) {
     this.store.select(({app}) => app.openTrasferConfirmationModal).subscribe(open => {
@@ -42,4 +44,11 @@ export class TransferConfirmationModalComponent implements OnInit {
     });
   }
 
+  transfer() {
+    let transactionData = JSON.parse(sessionStorage.getItem('transactionData'));
+    transactionData.data.unshift(JSON.parse(sessionStorage.getItem('newTransaction')));
+    sessionStorage.setItem('transactionData', JSON.stringify(transactionData));
+    this.transferList.emit(null);
+    this.transferBox.emit(null);
+  }
 }

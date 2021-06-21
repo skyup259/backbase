@@ -12,13 +12,35 @@ import { Transaction } from '../../models/transaction.model';
 })
 export class TransactionsListComponent implements OnInit {
 
-  transactions$: Observable<Transaction[]>;
+
+  transactions$: any[];
 
   constructor(private transactionsService: TransactionsService) { }
 
   ngOnInit(): void {
-    this.transactions$ = this.transactionsService.getTransactions();
-    console.log('value', this.transactions$);
+    //this.transactions$ = this.transactionsService.getTransactions();
+   // sessionStorage.setItem('transactionData', JSON.stringify(this.transactionDetail));
+    // this.transactions$ = this.yes().subscribe((snaps) => {
+    //   this.chal = snaps;
+    // });
+    //this.transactions$ = JSON.parse(sessionStorage.getItem('transactionData')).data;
+   // this.transactions$ = this.transactionsService.getTransactions();
+   if(sessionStorage.getItem('transactionData') === null) {
+    this.transactionsService.loadTransactions();
+   }
+   this.transactionList();
+  }
+
+  transactionList(): void {
+    this.transactions$ = JSON.parse(sessionStorage.getItem('transactionData')).data;
+  }
+
+  filterTransaction(event) {
+    this.transactionList();
+    this.transactions$ = this.transactions$.filter(e => {
+      return e.merchant.name.toLowerCase() === event.toLowerCase() ||
+              e.merchant.name.toLowerCase().indexOf(event.toLowerCase()) >= 0
+    });
   }
 
 }

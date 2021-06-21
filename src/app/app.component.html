@@ -6,13 +6,13 @@
 
 <div class="content row">
   <div class="col-4">
-    <app-transfer-form></app-transfer-form>
+    <app-transfer-form #ctf></app-transfer-form>
   </div>
   <div class="col-8">
-    <app-transactions-list></app-transactions-list>
+    <app-transactions-list #ctl></app-transactions-list>
   </div>
 </div>
 
-<app-transfer-confirmation-modal></app-transfer-confirmation-modal>
+<app-transfer-confirmation-modal (transferList)="ctl.transactionList()" (transferBox)="ctf.resetTransfer()"></app-transfer-confirmation-modal>
 
 <app-footer></app-footer>

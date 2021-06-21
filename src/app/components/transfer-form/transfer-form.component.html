@@ -23,7 +23,7 @@
               </label>
               <div class=" input-group w-100">
                   <input type="text" id="toAccount" name="toAccount" class="form-control" [class.ng-touched]="submitted"
-                      placeholder="type an account name" formControlName="toAccount">
+                      placeholder="type an account name" formControlName="toAccount" [(ngModel)]="toAccountName">
               </div>
               <p *ngIf="submitted && toAccount.errors?.required" class="invalid-feedback">This field is required</p>
 
@@ -35,7 +35,7 @@
                       <div class="input-group-text"><i class="lni lni-euro"></i></div>
                   </div>
                   <input type="number" id="amount" name="amount" class="form-control" step="0.01" [class.ng-touched]="submitted"
-                      placeholder="specify the amount" formControlName="amount">
+                      placeholder="specify the amount" formControlName="amount" [(ngModel)]="amountValue">
               </div>
               <p *ngIf="submitted && amount.errors?.required" class="invalid-feedback">This field is required</p>
               <p *ngIf="amount.errors?.min" class="invalid-feedback">The amount can't be negative</p>

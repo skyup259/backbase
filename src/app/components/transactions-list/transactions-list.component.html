@@ -6,15 +6,15 @@
   </div>
 
   <div class="card-body">
-    <app-filter></app-filter>
+    <app-filter (inputChange)="filterTransaction($event)"></app-filter>
     <div class="container mt-15">
-      <app-transaction-item *ngFor="let transaction of transactions$ | async" class="row">
+      <app-transaction-item *ngFor="let transaction of transactions$" class="row">
         <div
             data-test-hook='transactionColour'
             [style.background-color]="transaction.categoryCode"
             class="transaction-color col-1"
         ></div>
-        <div data-test-hook='transactionDate' class="transaction-date">{{ transaction.dates.valueDate | date }}</div>
+        <div data-test-hook='transactionDate' class="transaction-date">{{ transaction.dates.valueDate | date: 'MMM yy' }}</div>
         <div data-test-hook='transactionMerchantName' class="merchant-name">{{ transaction.merchant.name }}</div>
         <div data-test-hook='transactionType' class="transaction-type">{{ transaction.transaction.type }}</div>
         <div data-test-hook='transactionAmount' class="transaction-amount col-4" [ngClass]="transaction.transaction.amountCurrency.amount >= 0 ? 'text-color-green' : 'text-color-red'">{{ transaction.transaction.amountCurrency.amount | currency:"EUR":"symbol"}}</div>
