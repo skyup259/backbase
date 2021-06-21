@@ -15,7 +15,8 @@ export class TransactionsListComponent implements OnInit {
 
   transactions$: any[];
 
-  constructor(private transactionsService: TransactionsService) { }
+  constructor(private transactionsService: TransactionsService) {
+   }
 
   ngOnInit(): void {
     //this.transactions$ = this.transactionsService.getTransactions();
@@ -27,8 +28,13 @@ export class TransactionsListComponent implements OnInit {
    // this.transactions$ = this.transactionsService.getTransactions();
    if(sessionStorage.getItem('transactionData') === null) {
     this.transactionsService.loadTransactions();
+   } else {
+    this.transactionList();
    }
-   this.transactionList();
+  }
+
+  ngAfterViewChecked() {
+    this.transactionList();
   }
 
   transactionList(): void {
